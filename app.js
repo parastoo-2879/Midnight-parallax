@@ -1,0 +1,20 @@
+const moon = document.getElementById("moon");
+const mountains = document.getElementById("mountains");
+const road = document.getElementById("road");
+const sky = document.getElementById("sky");
+const midnight = document.getElementById("midnight");
+let _main = document.getElementsByTagName("main")[0];
+let _st;
+let cssObj = window.getComputedStyle(mountains);
+let _top1 = parseInt(cssObj.getPropertyValue("top"));
+console.log(_top1);
+let cssObj1 = window.getComputedStyle(midnight);
+let _top2 = parseInt(cssObj1.getPropertyValue("top"));
+_main.addEventListener("scroll", () => {
+  let _st = _main.scrollTop;
+  road.style.top = 0.5 * _st + "px";
+  moon.style.left = _st * 1.1 + "px";
+  mountains.style.top = _top1 + 0.05 * _st + "px";
+  sky.style.top = -1.2 * _st + "px";
+  midnight.style.top = _top2 + -1.5 * _st + "px";
+});
